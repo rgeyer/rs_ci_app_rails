@@ -1,0 +1,46 @@
+{
+  "rightscale": { "instance_uuid": "uuid-default" },
+  "ephemeral_lvm": {
+    "filesystem": "ext4",
+    "mount_point": "/mnt/ephemeral",
+    "logical_volume_name": "ephemeral0",
+    "logical_volume_size": "100%VG",
+    "stripe_size": 512,
+    "volume_group_name": "vg-data"
+  },
+  "rs-base": {
+    "collectd_server": "localhost",
+    "ntp": {
+      "servers": ["time.rightscale.com","ec2-us-east.time.rightscale.com","ec2-us-west.time.rightscale.com"]
+    },
+    "swap": {
+      "size": 1
+    }
+  },
+  "resolver": {
+    "nameservers": ["8.8.8.8","8.8.4.4","4.2.2.3","4.2.2.6"],
+    "search": "foo.bar.baz"
+  },
+  "rs_ci_app_rails": {
+    "fqdn": "33.33.33.128",
+    "route53": {
+      "enabled": "false",
+      "ip": "33.33.33.128",
+      "hostname": "hostname",
+      "zone_id": "zone_id",
+      "aws_access_key_id": "aws_access_key_id",
+      "aws_secret_access_key": "aws_secret_access_key"
+    }
+  },
+  "run_list": [
+    "recipe[resolver]",
+    "recipe[rightscaleshim]",
+    "recipe[ephemeral_lvm::default]",
+    "recipe[rs-machine_tag::default]",
+    "recipe[rs-base::swap]",
+    "recipe[rs-base::ntp]",
+    "recipe[rs-base::rsyslog]",
+    "recipe[rs-base::collectd]",
+    "recipe[rs_ci_app_rails]"
+  ]
+}

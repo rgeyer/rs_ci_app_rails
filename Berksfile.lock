@@ -1,0 +1,102 @@
+{
+  "sources": {
+    "ephemeral_lvm": {
+      "locked_version": "1.0.2",
+      "git": "git://github.com/rightscale-cookbooks/ephemeral_lvm.git",
+      "ref": "30339df6aa83c0bb825489eeacd6c82fd030c701"
+    },
+    "rs-machine_tag": {
+      "locked_version": "1.0.0",
+      "git": "git://github.com/rightscale-cookbooks/rs-machine_tag.git",
+      "ref": "9246ad3cd9d62c6e2ee5f480b193700d4ac7dbb9"
+    },
+    "machine_tag": {
+      "locked_version": "1.0.3",
+      "git": "git://github.com/rightscale-cookbooks/machine_tag.git",
+      "ref": "1d3c801dad9d058bc8e1e92c84604b0f9b2681e9"
+    },
+    "rs-base": {
+      "locked_version": "1.0.0",
+      "git": "git://github.com/rightscale-cookbooks/rs-base.git",
+      "ref": "3166a9944ebf7bd4bcd96b3bf3c28a77d7a4454a"
+    },
+    "marker": {
+      "locked_version": "1.0.0",
+      "git": "git://github.com/rightscale-cookbooks/marker.git",
+      "ref": "893cb7e00691a5b6a6192b43b67d7a975b6c41c4"
+    },
+    "collectd": {
+      "locked_version": "1.1.0",
+      "git": "git://github.com/EfrainOlivares/chef-collectd.git",
+      "ref": "ec50609ed6eb193e0411f30aced91befa571940f"
+    },
+    "application_ruby": {
+      "path": "../../Chef/rgeyer-rs-cookbooks/application_ruby"
+    },
+    "rs_ci_app_rails": {
+      "path": "./cookbook-rs_ci_app_rails"
+    },
+    "yum": {
+      "locked_version": "3.0.6"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.0"
+    },
+    "rightscaleshim": {
+      "locked_version": "0.2.1",
+      "git": "https://github.com/rgeyer-rs-cookbooks/rightscaleshim.git",
+      "ref": "8f32088da45932587c603cbb48ac5bbd82a2d79c"
+    },
+    "resolver": {
+      "locked_version": "1.1.2"
+    },
+    "lvm": {
+      "locked_version": "1.0.4"
+    },
+    "ntp": {
+      "locked_version": "1.4.0"
+    },
+    "swap": {
+      "locked_version": "0.3.6"
+    },
+    "rsyslog": {
+      "locked_version": "1.8.0"
+    },
+    "unicorn": {
+      "locked_version": "1.3.0"
+    },
+    "apache2": {
+      "locked_version": "1.6.6"
+    },
+    "passenger_apache2": {
+      "locked_version": "2.2.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "application": {
+      "locked_version": "4.1.4"
+    },
+    "runit": {
+      "locked_version": "1.5.8"
+    },
+    "logrotate": {
+      "locked_version": "1.2.2"
+    },
+    "nginx": {
+      "locked_version": "2.2.2"
+    },
+    "apt": {
+      "locked_version": "2.3.6"
+    },
+    "bluepill": {
+      "locked_version": "2.3.1"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
+    },
+    "route53": {
+      "locked_version": "0.3.2"
+    }
+  }
+}

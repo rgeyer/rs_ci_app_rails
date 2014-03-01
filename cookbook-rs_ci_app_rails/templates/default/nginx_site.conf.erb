@@ -1,0 +1,33 @@
+upstream unicorn {
+  server localhost:8080 fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name <%= @fqdn %>;
+
+  client_max_body_size 4G;
+  keepalive_timeout 5;
+
+  access_log <%= node[:nginx][:log_dir] %>/<%= @app_name %>-access.log;
+  error_log <%= node[:nginx][:log_dir] %>/<%= @app_name %>-error.log;
+
+  root <%= @path %>;
+
+  error_page 503 /system/maintenance.html;
+  if (-f $document_root/system/maintenance.html$nocycle) { set $nocycle 1; return 503; }
+  location = /system/maintenance.html { }
+
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)\?[0-9]+$ {
+    expires max;
+    log_not_found off;
+  }
+
+  location / {
+    proxy_set_header X-Forwarded_for $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+
+    proxy_pass http://unicorn;
+  }
+}
