@@ -13,7 +13,7 @@
     "machine_tag": {
       "locked_version": "1.0.3",
       "git": "git://github.com/rightscale-cookbooks/machine_tag.git",
-      "ref": "1d3c801dad9d058bc8e1e92c84604b0f9b2681e9"
+      "ref": "bc4c882bf6f8a62f5eade8a8a77ced8d238fed9d"
     },
     "rs-base": {
       "locked_version": "1.0.0",
@@ -31,7 +31,14 @@
       "ref": "ec50609ed6eb193e0411f30aced91befa571940f"
     },
     "application_ruby": {
-      "path": "../../Chef/rgeyer-rs-cookbooks/application_ruby"
+      "locked_version": "3.0.2",
+      "git": "git://github.com/rgeyer-rs-cookbooks/application_ruby.git",
+      "ref": "c4a99f26a1168adb9537f28c059a961ee8c22f2c"
+    },
+    "route53": {
+      "locked_version": "0.3.2",
+      "git": "git://github.com/rgeyer-rs-cookbooks/route53.git",
+      "ref": "804ad9c7e0bccdfc65901364349015ce2fd4eb97"
     },
     "rs_ci_app_rails": {
       "path": "./cookbook-rs_ci_app_rails"
@@ -43,9 +50,7 @@
       "locked_version": "0.3.0"
     },
     "rightscaleshim": {
-      "locked_version": "0.2.1",
-      "git": "https://github.com/rgeyer-rs-cookbooks/rightscaleshim.git",
-      "ref": "8f32088da45932587c603cbb48ac5bbd82a2d79c"
+      "path": "../../Chef/rgeyer-rs-cookbooks/rightscaleshim"
     },
     "resolver": {
       "locked_version": "1.1.2"
@@ -87,7 +92,7 @@
       "locked_version": "2.2.2"
     },
     "apt": {
-      "locked_version": "2.3.6"
+      "locked_version": "2.3.8"
     },
     "bluepill": {
       "locked_version": "2.3.1"
@@ -95,8 +100,17 @@
     "ohai": {
       "locked_version": "1.1.12"
     },
-    "route53": {
-      "locked_version": "0.3.2"
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
     }
   }
 }

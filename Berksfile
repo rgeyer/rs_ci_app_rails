@@ -22,10 +22,15 @@ group :servertemplate do
     ref: 'ec50609ed6eb193e0411f30aced91befa571940f'
 
   cookbook "application_ruby",
-    path: "/Users/ryangreyer/Code/Chef/rgeyer-rs-cookbooks/application_ruby"
+    github: "rgeyer-rs-cookbooks/application_ruby",
+    ref: "COOK-4395"
+
+  cookbook "route53",
+    github: "rgeyer-rs-cookbooks/route53",
+    ref: "needs_build_essential"
 
   cookbook "rs_ci_app_rails",
-    path: "cookbook-rs_ci_app_rails"
+    path: "./cookbook-rs_ci_app_rails"
 end
 
 group :vagrant_only do
@@ -34,7 +39,7 @@ group :vagrant_only do
   cookbook "yum-epel"
 
   cookbook "rightscaleshim",
-    git: "https://github.com/rgeyer-rs-cookbooks/rightscaleshim.git"
+    path: "/Users/ryangreyer/Code/Chef/rgeyer-rs-cookbooks/rightscaleshim"
 
   cookbook "resolver"
 end

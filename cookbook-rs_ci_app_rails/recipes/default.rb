@@ -7,11 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
+
 app_name = "rs_ci_app_rails"
 deploy_dir = ::File.join("/opt",app_name)
+fqdn = "#{node['rs_ci_app_rails']['environment']}-#{node['rs_ci_app_rails']['fqdn']}"
 
+node.normal['nginx']['server_names_hash_bucket_size'] = 128
 node.normal['nginx']['install_method'] = 'package'
 
+include_recipe "git" # Required by application cookbook, should it be a pull request there?
 include_recipe "runit"
 include_recipe "nginx"
 include_recipe "route53"
@@ -40,7 +47,7 @@ application app_name do
   owner "root"
   group "root"
   repository "https://github.com/rgeyer/rs_ci_app_rails"
-  revision "master"
+  revision node['rs_ci_app_rails']['branch']
 
   rails do
     bundler true
@@ -60,7 +67,7 @@ template ::File.join("/etc/nginx/sites-available", app_name) do
   variables(
       :path => ::File.join(deploy_dir, "current", "public"),
       :app_name => app_name,
-      :fqdn => node['rs_ci_app_rails']['fqdn']
+      :fqdn => fqdn
   )
 end
 
@@ -71,15 +78,19 @@ end
 nginx_site app_name
 
 if node['rs_ci_app_rails']['route53']['enabled'] == "true"
-  log "Updating DNS Record"
+  name  = fqdn
+  ip    = node['rs_ci_app_rails']['route53']['ip']
+  zone  = node['rs_ci_app_rails']['route53']['zone_id']
+  log "Updating DNS Record.. Name: #{name} IP: #{ip} Zone: #{zone}"
 
   # TODO: Validate the node attributes which are now required, but are defined
   # as "optional" in the metadata
   route53_record "create a record" do
-    name  node['rs_ci_app_rails']['route53']['hostname']
-    value node['rs_ci_app_rails']['route53']['ip']
+    name  name
+    value ip
     type  "A"
-    zone_id               node['rs_ci_app_rails']['route53']['zone_id']
+    ttl   60
+    zone_id               zone
     aws_access_key_id     node['rs_ci_app_rails']['route53']['aws_access_key_id']
     aws_secret_access_key node['rs_ci_app_rails']['route53']['aws_secret_access_key']
     overwrite true
@@ -89,3 +100,7 @@ if node['rs_ci_app_rails']['route53']['enabled'] == "true"
 else
   log "DNS attributes are not set, skipping updating Route53 DNS record."
 end
+
+machine_tag "rs_ci_app:lang=rails"
+machine_tag "rs_ci_app:environment=#{node['rs_ci_app_rails']['environment']}"
+machine_tag "rs_ci_app:branch=#{node['rs_ci_app_rails']['branch']}"
