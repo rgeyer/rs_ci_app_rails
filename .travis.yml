@@ -5,4 +5,5 @@ notifications:
   webhooks:
     urls:
       - http://production-rs-ci-app-rails.cse.rightscale-services.com/deployself
+    on_success: always
     on_failure: never
