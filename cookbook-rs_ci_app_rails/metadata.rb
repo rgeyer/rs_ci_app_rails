@@ -57,3 +57,18 @@ attribute "rs_ci_app_rails/branch",
   :description => "Application code branch or revision.  Passed directly to the git deploy resource",
   :required => "required",
   :recipes => ["rs_ci_app_rails::default"]
+
+attribute "rs_ci_app_rails/rs/email",
+  :display_name => "RightScale Account Email",
+  :required => "required",
+  :recipes => ["rs_ci_app_rails::default"]
+
+attribute "rs_ci_app_rails/rs/password",
+  :display_name => "RightScale Account Password",
+  :required => "required",
+  :recipes => ["rs_ci_app_rails::default"]
+
+attribute "rs_ci_app_rails/rs/acct_id",
+  :display_name => "RightScale Account Id",
+  :required => "required",
+  :recipes => ["rs_ci_app_rails::default"]

@@ -13,6 +13,7 @@ end
 
 app_name = "rs_ci_app_rails"
 deploy_dir = ::File.join("/opt",app_name)
+app_config_file = ::File.join(deploy_dir, "config", "application.rb")
 fqdn = "#{node['rs_ci_app_rails']['environment']}-#{node['rs_ci_app_rails']['fqdn']}"
 
 node.normal['nginx']['server_names_hash_bucket_size'] = 128
@@ -60,6 +61,15 @@ application app_name do
 
   unicorn do
   end
+end
+
+template app_config_file do
+  source "application.rb.erb"
+  variables (
+    :rsemail => node['rs_ci_app_rails']['rs']['email'],
+    :rspass => node['rs_ci_app_rails']['rs']['password'],
+    :rsaccountid => node['rs_ci_app_rails']['rs']['acct_id']
+  )
 end
 
 template ::File.join("/etc/nginx/sites-available", app_name) do

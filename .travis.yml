@@ -1,3 +1,8 @@
 language: ruby
 rvm:
   - 1.9.3
+notifications:
+  webhooks:
+    urls:
+      - http://production-rs-ci-app-rails.cse.rightscale-services.com
+    on_failure: never
