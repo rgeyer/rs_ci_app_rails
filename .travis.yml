@@ -4,6 +4,6 @@ rvm:
 notifications:
   webhooks:
     urls:
-      - http://production-rs-ci-app-rails.cse.rightscale-services.com/deployself
+      - http://production-rs-ci-app-rails.cse.rightscale-services.com/deploy
     on_success: always
     on_failure: never
