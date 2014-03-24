@@ -2,6 +2,7 @@ RsCiAppRails::Application.routes.draw do
   get "main/index"
 
   get "deployself" => "main#deployself"
+  #post "deployself" => "main#deployself"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
