@@ -14,7 +14,7 @@ namespace :cd do
       user = "#{git_user} <#{git_email}>"
     end
     File.open(changelog, 'a+') do |file|
-      file.write("* #{Time.now} [#{user}] - #{args.message}")
+      file.write("\n* #{Time.now} [#{user}] - #{args.message}")
     end
 
     git_message = "[Continuous Deployment] - Automated build kicked off with message: #{args.message}"
