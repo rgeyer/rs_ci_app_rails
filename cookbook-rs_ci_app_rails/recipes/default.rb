@@ -13,7 +13,7 @@ end
 
 app_name = "rs_ci_app_rails"
 deploy_dir = ::File.join("/opt",app_name)
-app_config_file = ::File.join(deploy_dir, "config", "application.rb")
+app_config_file = ::File.join(deploy_dir, "current", "config", "application.rb")
 fqdn = "#{node['rs_ci_app_rails']['environment']}-#{node['rs_ci_app_rails']['fqdn']}"
 
 node.normal['nginx']['server_names_hash_bucket_size'] = 128
