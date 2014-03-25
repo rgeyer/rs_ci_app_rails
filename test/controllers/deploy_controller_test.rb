@@ -7,7 +7,7 @@ class DeployControllerTest < ActionController::TestCase
     mule_re_mock
       .should_receive("run_executable")
       .once
-      .with("rs_ci_app:environment=production", "rs_ci_app_rails::default", :inputs => {"rs_ci_app_rails/branch" => "1a60f81a54545eec9574001e6c99ea6d91f04639"}, :update_inputs => ["current_instance", "next_instance"])
+      .with("rs_ci_app:environment=production", "rs_ci_app_rails::default", :inputs => {"rs_ci_app_rails/branch" => "text:1a60f81a54545eec9574001e6c99ea6d91f04639"}, :update_inputs => ["current_instance", "next_instance"])
 
     flexmock(RightApi::Client)
       .should_receive(:new)
@@ -29,7 +29,7 @@ EOF
     mule_re_mock
     .should_receive("run_executable")
     .once
-    .with("rs_ci_app:environment=dev", "rs_ci_app_rails::default", :inputs => {"rs_ci_app_rails/branch" => "1a60f81a54545eec9574001e6c99ea6d91f04639"}, :update_inputs => ["current_instance", "next_instance"])
+    .with("rs_ci_app:environment=dev", "rs_ci_app_rails::default", :inputs => {"rs_ci_app_rails/branch" => "text:1a60f81a54545eec9574001e6c99ea6d91f04639"}, :update_inputs => ["current_instance", "next_instance"])
 
     flexmock(RightApi::Client)
     .should_receive(:new)

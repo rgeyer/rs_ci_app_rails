@@ -16,7 +16,7 @@ class DeployController < ApplicationController
       re.run_executable(
         "rs_ci_app:environment=#{environment}",
         "rs_ci_app_rails::default",
-        :inputs => {"rs_ci_app_rails/branch" => webhook["commit"]},
+        :inputs => {"rs_ci_app_rails/branch" => "text:#{webhook["commit"]}"},
         :update_inputs => ["current_instance", "next_instance"]
       )
     end
