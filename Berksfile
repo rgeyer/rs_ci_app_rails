@@ -5,8 +5,8 @@ group :servertemplate do
     git: "git://github.com/rightscale-cookbooks/ephemeral_lvm.git",
     ref: '30339df6aa83c0bb825489eeacd6c82fd030c701'
 
-  cookbook "rs-machine_tag",
-    git: "git://github.com/rightscale-cookbooks/rs-machine_tag.git"
+  cookbook "rightscale_tag",
+    git: "git://github.com/rightscale-cookbooks/rightscale_tag.git"
 
   cookbook "machine_tag",
     git: "git://github.com/rightscale-cookbooks/machine_tag.git"
