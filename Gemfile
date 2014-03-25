@@ -36,6 +36,7 @@ end
 
 group :test do
   gem 'rake'
+  gem 'flexmock'
 end
 
 group :dev do
