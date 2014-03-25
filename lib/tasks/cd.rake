@@ -20,5 +20,6 @@ namespace :cd do
     git_message = "[Continuous Deployment] - Automated build kicked off with message: #{args.message}"
     `#{git_binary} add #{changelog}`
     `#{git_binary} commit -m "#{git_message}"`
+    `#{git_binary} push`
   end
 end
