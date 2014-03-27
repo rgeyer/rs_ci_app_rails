@@ -23,11 +23,42 @@ the change to GitHub, kicking off the process, which looks like this.
 
 {<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />}[<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />]
 
+If you don't have a working environment, here's what you'll need to do.
+
 === Launch rs_ci_app_rails VM
+
+You're going to need to fire up an instance of this rs_ci_app_rails application
+which will accept the webhooks from TravisCI.
+
+Fortunately, there is a RightScale ServerTemplate[https://github.com/rgeyer/rs_ci_app_rails/master/README.rdoc#servertemplate]
+for running the app, which should make it pretty easy.
 
 === Fork on GitHub
 
-=== Setup TravisCI
+You'll want your own fork of the rs_ci_app_rails repository so that you can commit
+to it and kick off the CD workflow.  See how to do that on GitHub here[https://help.github.com/articles/fork-a-repo].
+
+While you're at it, if you haven't already set your git global user.email and
+user.name, you should now, since the rake task will use them to add a new record
+to continuous_deployment.changelog.markdown.  See how here[https://help.github.com/articles/setting-your-email-in-git].
+
+=== Enable GitHub Webhook
+
+Instructions here[http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook]
+
+=== Setup TravisCI Webhook
+
+Once you've got your own fork of the repository, and you've told github to call
+TravisCI on new commits, you'll want to modify the .travis.yml to point to your
+instance of rs_ci_app_rails.
+
+Simply change the URL line in the .travis.yml file to match the following.
+
+    http://#{environment}-#{fqdn}/deploy?environment=#{environment}
+
+Yes, the environment is listed twice, and this is by design.  You could use your
+production instance of rs_ci_app_rails to deploy to your development instance
+of rs_ci_app_rails.
 
 == ServerTemplate
 
@@ -35,6 +66,13 @@ the change to GitHub, kicking off the process, which looks like this.
 
 == Cookbook
 
+Check out it's README[https://github.com/rgeyer/rs_ci_app_rails/master/cookbook-rs_ci_app_rails/README.md]
+
 == Vagrant
 
 There is a hacky Vagrantfile in place, which is intended to emulate the ServerTemplate[https://github.com/rgeyer/rs_ci_app_rails/master/README.rdoc#servertemplate] but is currently not working.
+
+== TODO
+
+- Self signed cert and basic authentication
+- Ability to deploy to a new instance, rather than updating an existing one (depends upon rs-mule[https://github.com/rgeyer/rs-mule] support).
