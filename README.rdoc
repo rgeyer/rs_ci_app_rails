@@ -1,28 +1,40 @@
-== README
+= rs_ci_app_rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a very simple Rails4 app which will display the current git commit SHA of the application.
 
-Things you may want to cover:
+It also has a /deploy controller which will make API calls to RightScale to
+deploy a new build SHA of the application.  The deploy controller is designed
+to accept webhooks from Travis CI and consumes only the "commit" property of
+json payload[https://gist.github.com/svenfuchs/1225015]
 
-* Ruby version
+{<img src="https://travis-ci.org/rgeyer/rs_ci_app_rails.png" />}[https://travis-ci.org/rgeyer/rs_ci_app_rails]
 
-* System dependencies
+== Usage
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you've got everything setup, which I cover below, you can kick off a new
+build and deployment with the following command.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    rake ci:deploy["Your commit/deploy message"]
+
+
+That will append a line to continuous_deployment.changelog.markdown and commit
+the change to GitHub, kicking off the process, which looks like this.
+
+{<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />}[<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />]
+
+=== Launch rs_ci_app_rails VM
+
+=== Fork on GitHub
+
+=== Setup TravisCI
+
+== ServerTemplate
+
+{Here it is}[http://www.rightscale.com/library/server_templates/rs_ci_app_rails/lineage/48311]
+
+== Cookbook
+
+== Vagrant
+
+There is a hacky Vagrantfile in place, which is intended to emulate the ServerTemplate[https://github.com/rgeyer/rs_ci_app_rails/master/README.rdoc#servertemplate] but is currently not working.
