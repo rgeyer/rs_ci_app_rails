@@ -21,7 +21,7 @@ build and deployment with the following command.
 That will append a line to continuous_deployment.changelog.markdown and commit
 the change to GitHub, kicking off the process, which looks like this.
 
-{<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />}[<img src="https://github.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />]
+{<img src="https://raw.githubusercontent.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png" />}[https://raw.githubusercontent.com/rgeyer/rs_ci_app_rails/master/readme_statics/images/flow.png]
 
 If you don't have a working environment, here's what you'll need to do.
 
