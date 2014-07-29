@@ -76,3 +76,4 @@ There is a hacky Vagrantfile in place, which is intended to emulate the ServerTe
 
 - Self signed cert and basic authentication
 - Ability to deploy to a new instance, rather than updating an existing one (depends upon rs-mule[https://github.com/rgeyer/rs-mule] support).
+- "Dockerize" the application, and possibly the whole CI process?
