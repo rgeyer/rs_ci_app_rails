@@ -30,7 +30,7 @@ If you don't have a working environment, here's what you'll need to do.
 You're going to need to fire up an instance of this rs_ci_app_rails application
 which will accept the webhooks from TravisCI.
 
-Fortunately, there is a RightScale ServerTemplate[https://github.com/rgeyer/rs_ci_app_rails/master/README.rdoc#servertemplate]
+Fortunately, there is a RightScale ServerTemplate[https://github.com/rgeyer/rs_ci_app_rails/blob/master/README.rdoc#servertemplate]
 for running the app, which should make it pretty easy.
 
 === Fork on GitHub
